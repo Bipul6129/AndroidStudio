@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="220dp"
+        android:text="Login"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Username"
+        android:id="@+id/Enterusername"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Password"
+        android:id="@+id/Enterpassword"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/Enterusername"
+        app:layout_constraintStart_toStartOf="@+id/Enterusername"
+        app:layout_constraintEnd_toEndOf="@+id/Enterusername"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:text="Forgot Password"
+        android:id="@+id/forgotpassword"
+
+        app:layout_constraintStart_toStartOf="@+id/Enterpassword"
+        app:layout_constraintEnd_toEndOf="@+id/Enterpassword"
+        app:layout_constraintTop_toBottomOf="@+id/Enterpassword"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/Login"
+        app:layout_constraintStart_toStartOf="@+id/forgotpassword"
+        app:layout_constraintEnd_toEndOf="@+id/forgotpassword"
+        app:layout_constraintTop_toBottomOf="@+id/forgotpassword"
+        android:layout_marginTop="40px"
+        />
+
+    <Button
+        android:id="@+id/RegisterB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="@+id/Login"
+        app:layout_constraintStart_toStartOf="@+id/Login"
+
+        app:layout_constraintTop_toBottomOf="@+id/Login" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
