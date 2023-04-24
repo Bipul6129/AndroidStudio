@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.android.asianpay.R;
+import com.android.asianpay.district.adapter.DistrictRecyclerViewAdapter;
 import com.android.asianpay.district.model.DistrictModel;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class DistrictActivity extends AppCompatActivity {
 
     RecyclerView districtRecyclerView;
     LinearLayoutManager layoutManager;
+    DistrictRecyclerViewAdapter adapter;
 
     ArrayList<DistrictModel> data = new ArrayList<>();
 
@@ -22,14 +24,20 @@ public class DistrictActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_district);
-        //fixme 1 init
+
+        //todo - create data for district - DONE
+        createDistrictData();
+        //fixme 1 init - DONE
         districtRecyclerView = findViewById(R.id.district_recyclerview);
-        //fixme 2 linearlayout manager
+        //fixme 2 linearlayout manager - DONE
         layoutManager = new LinearLayoutManager(this);
-        //fixme 3 set layout manager
+        //fixme 3 set layout manager - DONE
         districtRecyclerView.setLayoutManager(layoutManager);
-        //fixme 4 init adapter
-        //fixme 5 set adapter
+        //fixme 4 init adapter - DONE
+        adapter = new DistrictRecyclerViewAdapter(data, this);
+        //fixme 5 set adapter - DONE
+        districtRecyclerView.setAdapter(adapter);
+
     }
 
     void createDistrictData () {

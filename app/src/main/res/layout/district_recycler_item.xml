@@ -9,6 +9,7 @@
 
 
     <TextView
+        android:textSize="22sp"
         android:id="@+id/district_name"
         android:text="District Name"
         android:padding="10dp"

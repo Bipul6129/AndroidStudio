@@ -7,6 +7,7 @@
     tools:context=".RecyclerActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        tools:listitem="@layout/district_recycler_item"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
