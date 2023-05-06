@@ -6,29 +6,31 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.android.asianpay.fragments.FragmentA;
+import com.android.asianpay.fragments.FragmentB;
 
-//create 3 drawables vectrors
-
-// new android resource directory, res>new>android resource dir
-
-// in menu folder, new menu_res file
-
-// new example menu, add items and sub items
-
-// ctrl +alt > onCreateOption menu
+//todo 1: create 2 layouts as fragment_a.xml and fragment_b.xml
+//todo 2: fragment_a.xml should have background color red and fragment_b must have blue
+//todo 3: in activity_main.xml use linearlayout root with framelayout followed by two buttons
+//todo 4: buttons must be named A and B with id as btn_fragment_a and btn_fragment_b
+//todo 5: create class FragmentA and extend Fragment
+//todo 6: override onViewCreated and inflate the view `inflater.inflate(layout, container, false)
+//todo 7: init buttons in main activity with listeners
+//todo 8: use replaceFragment function in listeners
 
 public class MainActivity extends AppCompatActivity {
 
-
-    //todo 1 : add 3 vector icons to the project from clip art source
-    //todo 2: in res folder create new `android resource directory` folder named "menu"
-    //todo 3: in menu folder create NEW > Menu Resource File called `example_menu.xml`
-    //todo 4: add 3 items with id, icon, title, showAsAction fields
+        Button buttonA, buttonB;
 
 
     @Override
@@ -36,26 +38,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        buttonA = findViewById(R.id.btn_fragment_a);
+        buttonB = findViewById(R.id.btn_fragment_b);
+
+        buttonA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(new FragmentA());
+            }
+        });
+
+        buttonB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(new FragmentB());
+            }
+        });
+
     }
 
-    //////////////////////////////////////////////////////////////////
 
 
-    /**
-     * todo 5: override onCreateOptionMenu
-     *  todo : create an object of MenuInflater as inflater = getMenuInflater();
-     *  todo : inflater.inflate(xml, menu);
-     *  todo: return true;
-     */
+    private void replaceFragment(Fragment fragment){
 
-//////////////////////////////////////////////////////////////////
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame,fragment);
+        fragmentTransaction.commit();
 
-    /**
-     * todo 5: override onOptionsItemSelected
-     *  todo : switch for item.getItemId
-     *  todo : write cases for item1 and item2
-     *  todo: return super.onOptionItemSelected(item);
-     */
+    }
+
 
 
 }
