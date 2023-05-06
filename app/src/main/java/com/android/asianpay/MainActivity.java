@@ -2,65 +2,60 @@ package com.android.asianpay;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.android.asianpay.adapter.AnimalRecyclerAdapter;
-import com.android.asianpay.model.AnimalModel;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.InputStream;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Scanner;
+
+//create 3 drawables vectrors
+
+// new android resource directory, res>new>android resource dir
+
+// in menu folder, new menu_res file
+
+// new example menu, add items and sub items
+
+// ctrl +alt > onCreateOption menu
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView animalRecycler;
-    AnimalRecyclerAdapter adapter;
-    ArrayList<AnimalModel> data = new ArrayList<>();
+
+    //todo 1 : add 3 vector icons to the project from clip art source
+    //todo 2: in res folder create new `android resource directory` folder named "menu"
+    //todo 3: in menu folder create NEW > Menu Resource File called `example_menu.xml`
+    //todo 4: add 3 items with id, icon, title, showAsAction fields
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //get and parse data
-        convertingData();
-
-
-        //init recycler
-        animalRecycler = findViewById(R.id.recycler);
-        //set layout manager
-        animalRecycler.setLayoutManager(new LinearLayoutManager(this));
-        //make adapter
-        adapter = new AnimalRecyclerAdapter(this, data);
-        //set adapter
-        animalRecycler.setAdapter(adapter);
-
-
-
     }
 
-    void convertingData(){
+    //////////////////////////////////////////////////////////////////
 
-        //gets file source
-        InputStream inputStream = getResources().openRawResource(R.raw.animal);
-        //converts json to string
-        String jsonString = new Scanner(inputStream).useDelimiter("\\A").next();
-        //init gson library
-        Gson gson = new Gson();
-        //declares type (what type of data are your expecting from jsonString?)
-        Type type = new TypeToken<ArrayList<AnimalModel>>() {}.getType();
-        //uses that `type` object to convert jsonString to required arraylist
-        data = gson.fromJson(jsonString,type);
 
-    }
+    /**
+     * todo 5: override onCreateOptionMenu
+     *  todo : create an object of MenuInflater as inflater = getMenuInflater();
+     *  todo : inflater.inflate(xml, menu);
+     *  todo: return true;
+     */
+
+//////////////////////////////////////////////////////////////////
+
+    /**
+     * todo 5: override onOptionsItemSelected
+     *  todo : switch for item.getItemId
+     *  todo : write cases for item1 and item2
+     *  todo: return super.onOptionItemSelected(item);
+     */
+
+
 }
