@@ -18,33 +18,21 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int CODE = 202;
 
-    Button go;
-    TextView result;
+    //todo 1 : create Button with id `go` and initialize
+    //todo 2 : create TextView with id `result` and initialize
+    //todo 3 : add onClickListener for `go` button
+    //todo 4 : create Intent from Main to SecondActivity as object i
+    //todo 5 : call function `startActivityForResult(intent, 202)`
+    //todo 12 : override onActivityResult and if requestCode == 202, data.getStringExtra("gender)
+    //todo 13 : result.setText() the incoming value
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        go = findViewById(R.id.btn_result);
-        result = findViewById(R.id.result);
 
-        go.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, SecondActivity.class);
-                startActivityForResult(i, CODE);
-
-            }
-        });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==202){
-            String message = data.getStringExtra("gender");
-            result.setText(message);
-        }
-    }
 }
