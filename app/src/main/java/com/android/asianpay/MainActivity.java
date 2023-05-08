@@ -12,10 +12,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.android.asianpay.fragments.DialogA;
 import com.android.asianpay.fragments.FragmentA;
 import com.android.asianpay.fragments.FragmentB;
 
@@ -31,6 +33,7 @@ import com.android.asianpay.fragments.FragmentB;
 public class MainActivity extends AppCompatActivity {
 
         Button buttonA, buttonB;
+        Button buttonC;
 
 
     @Override
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         buttonA = findViewById(R.id.btn_fragment_a);
         buttonB = findViewById(R.id.btn_fragment_b);
+        buttonC = findViewById(R.id.btn_c);
 
         buttonA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        buttonC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               new DialogA().show(getSupportFragmentManager(), "a");
+            }
+        });
+
     }
 
 
@@ -64,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame,fragment);
+        fragmentTransaction.add(R.id.frame,fragment);
         fragmentTransaction.commit();
 
     }
