@@ -1,11 +1,17 @@
 package com.android.asianpay;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.android.asianpay.frags.DialgoC;
+import com.android.asianpay.frags.FragmentA;
+import com.android.asianpay.frags.FragmentB;
 
 //todo 1: create 2 layouts as fragment_a.xml and fragment_b.xml
 //todo 2: fragment_a.xml should have background color red and fragment_b must have blue
@@ -17,17 +23,34 @@ import androidx.fragment.app.FragmentTransaction;
 //todo 8: use replaceFragment function in listeners
 
 public class MainActivity extends AppCompatActivity {
-
+    Button btn_a;
+    Button btn_b;
+    Button btn_c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        btn_a = findViewById(R.id.btn_to_a);
+        btn_b = findViewById(R.id.btn_to_b);
+        btn_c = findViewById(R.id.btn_c);
         //fixme code below this line here
         //////////////////////////////////////////
+        btn_a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(new FragmentA());
+            }
+        });
 
+        btn_b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(new FragmentB());
+            }
+        });
+
+        btn_c.setOnClickListener(view -> new DialgoC().show(getSupportFragmentManager(),DialgoC.TAG));
 
         /////////////////////////////////////////
     }
@@ -37,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame, fragment);
+        fragmentTransaction.add(R.id.frame, fragment);
         fragmentTransaction.commit();
 
     }
