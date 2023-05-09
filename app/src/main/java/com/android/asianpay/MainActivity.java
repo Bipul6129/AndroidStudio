@@ -26,13 +26,31 @@ public class MainActivity extends AppCompatActivity {
     //todo 12 : override onActivityResult and if requestCode == 202, data.getStringExtra("gender)
     //todo 13 : result.setText() the incoming value
 
-
+    Button go_btn;
+    TextView result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        go_btn = findViewById(R.id.btn_result);
+        result = findViewById(R.id.result);
+        go_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+//            startActivity(intent);
+            startActivityForResult(intent,CODE);
+            }
+        });
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==CODE){
+            String value = data.getStringExtra("gender");
+            result.setText(value);
+        }
+    }
 }
